@@ -1,0 +1,8 @@
+# Don't track contents of followinf folder
+build/
+
+# Generated images
+*.img
+
+# Vscode settings
+*.json

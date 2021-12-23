@@ -5,7 +5,7 @@ void gpio_pin_set_func(u8 pinNumber, GpioFunc func) {
     u8 reg = pinNumber / 10;
 
     u32 selector = REGS_GPIO->func_select[reg];
-    selector &= ~(7 >> bitstart);
+    selector &= ~(7 << bitstart);
     selector |= (func << bitstart);
 
     REGS_GPIO->func_select[reg] = selector;
