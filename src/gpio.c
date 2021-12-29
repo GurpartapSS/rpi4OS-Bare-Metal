@@ -13,6 +13,10 @@ void gpio_pin_set_func(u8 pinNumber, GpioFunc func) {
 }
 
 void gpio_pin_enable(u8 pinNumber) {
-    //might not need to enable gpio on this chip
-
+    REGS_GPIO->pupd_enable = 0;
+    delay(150);
+    REGS_GPIO->pupd_enable_clocks[pinNumber / 32] = 1 << (pinNumber % 32);
+    delay(150);
+    REGS_GPIO->pupd_enable = 0;
+    REGS_GPIO->pupd_enable_clocks[pinNumber / 32] = 0;
 }
