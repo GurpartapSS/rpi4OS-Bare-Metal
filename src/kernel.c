@@ -1,6 +1,8 @@
 #include "common.h"
 #include "mini_uart.h"
 
+u32 get_el();
+
 void kernel_main() {
     uart_init();
     uart_send_string("RPI Bare Metal OS Initializing .....\n");
@@ -9,7 +11,7 @@ void kernel_main() {
         uart_send_string("\tBoard : Raspberry Pi 4\n");
     #endif
 
-    uart_send_string("\nDone\n");
+    uart_send_string("\nDone with exception level \n");
 
     while (1)
     {

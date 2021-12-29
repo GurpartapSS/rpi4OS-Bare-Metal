@@ -1,4 +1,5 @@
 #include "gpio.h"
+#include "utils.h"
 
 void gpio_pin_set_func(u8 pinNumber, GpioFunc func) {
     u8 bitstart = (pinNumber * 3) % 30;
