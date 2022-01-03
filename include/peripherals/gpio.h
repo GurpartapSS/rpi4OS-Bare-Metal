@@ -23,8 +23,9 @@ struct GpioRegs
     GpioPinData lo_detect_enable;
     GpioPinData async_re_detect;
     GpioPinData async_fe_detect;
-    reg32 reserved[22];
-    reg32 pupd[4];
+    reg32 reserved;
+    reg32 pupd_enable;
+    reg32 pupd_enable_clocks[2];
 };
 
 #define REGS_GPIO ((struct GpioRegs *)(PBASE + 0x00200000))
