@@ -1,6 +1,6 @@
 # Don't track contents of followinf folder
-build/
-media/
+build/*
+media/*
 
 # Generated images
 *.img
