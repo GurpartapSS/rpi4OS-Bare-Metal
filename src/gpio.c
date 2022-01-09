@@ -10,7 +10,6 @@ void gpio_pin_set_func(u8 pinNumber, GpioFunc func) {
     selector |= (func << bitstart);
 
     REGS_GPIO->func_select[reg] = selector;
-
 }
 
 void gpio_pin_enable(u8 pinNumber) {

@@ -20,10 +20,9 @@ void kernel_main() {
         uart_send_string("\tBoard : Raspberry Pi 4\n");
     #endif
 
-    uart_send_string("\nDone with exception level \n");
+    printf("\nDone with exception level: %d \n",get_el());
 
-    while (1)
-    {
+    while (1) {
         uart_send(uart_recv());
     }
 }
