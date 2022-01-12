@@ -26,6 +26,8 @@ master:
     adr x0, el1_entry
     msr elr_el3, x0
 
+    eret
+
 el1_entry:
     adr x0, bss_begin
     adr x1, bss_end
