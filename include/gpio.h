@@ -3,14 +3,14 @@
 #include "peripherals/gpio.h"
 
 typedef enum _GpioFunc {
-    GFInput,
-    GFOutut,
-    GFAlt0,
-    GFAlt1,
-    GFAlt2,
-    GFAlt3,
-    GFAlt4,
-    GFAlt5,
+    GFInput = 0,
+    GFOutput = 1,
+    GFAlt0 = 4,
+    GFAlt1 = 5,
+    GFAlt2 = 6,
+    GFAlt3 = 7,
+    GFAlt4 = 3,
+    GFAlt5 = 2
 } GpioFunc;
 
 void gpio_pin_set_func(u8 pinNumber, GpioFunc func);

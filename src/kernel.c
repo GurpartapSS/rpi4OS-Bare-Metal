@@ -8,13 +8,15 @@ void putc(void *p, char c) {
     if(c == '\n') {
         uart_send('\r');
     }
+
+    uart_send(c);
 }
 
 void kernel_main() {
     uart_init();
     init_printf(0, putc);
-    printf("RPI Bare Metal OS Initializing .....\n");
-    // uart_send_string("RPI Bare Metal OS Initializing .....\n");
+    printf("Printing RPI Bare Metal OS Initializing .....\n");
+    uart_send_string("RPI Bare Metal OS Initializing .....\n");
 
     #if RPI_VERSION == 4
         uart_send_string("\tBoard : Raspberry Pi 4\n");
