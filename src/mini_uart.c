@@ -6,6 +6,10 @@
 #define TXD 14
 #define RXD 15
 
+#define CLOCK_FREQ 500000000
+#define BAUD_RATE 9600
+
+
 void uart_init() {
     gpio_pin_set_func(TXD, GFAlt5);
     gpio_pin_set_func(RXD, GFAlt5);
@@ -20,7 +24,8 @@ void uart_init() {
     REGS_AUX->mu_mcr = 0;
 
     //for rpi4 115200 @ 500 Mhz
-    REGS_AUX->mu_baud = 541;
+    // REGS_AUX->mu_baud = 541;
+    REGS_AUX->mu_baud = (CLOCK_FREQ/(8*BAUD_RATE))-1;
 
     REGS_AUX->mu_control = 3;
 
