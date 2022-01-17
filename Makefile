@@ -4,7 +4,8 @@ BOOTMNT ?= ./media/boot
 
 ARMGNU ?= aarch64-linux-gnu
 
-COPS = -DRPI_VERSION=$(RPI_VERSION) -Wall -nostdlib -nostartfiles -ffreestanding -Iinclude -mgeneral-regs-only
+# COPS = -DRPI_VERSION=$(RPI_VERSION) -Wall -nostdlib -nostartfiles -ffreestanding -Iinclude -mgeneral-regs-only
+COPS = -DRPI_VERSION=$(RPI_VERSION) -Wall -nostdlib -nostartfiles -ffreestanding -Iinclude
 
 ASMOPS = -Iinclude
 
@@ -15,7 +16,7 @@ all : kernel8.img
 
 clean :
 	rm -rf $(BUILD_DIR) *.img
-	rm -rf $(BUILD_DIR) *.bin
+# rm -rf $(BUILD_DIR) *.bin
 
 $(BUILD_DIR)/%_c.o: $(SRC_DIR)/%.c
 	mkdir -p $(@D)
