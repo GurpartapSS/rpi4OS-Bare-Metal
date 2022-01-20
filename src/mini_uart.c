@@ -7,7 +7,7 @@
 #define RXD 15
 
 #define CLOCK_FREQ 500000000
-#define BAUD_RATE 9600
+#define BAUD_RATE 115200
 
 
 void uart_init() {

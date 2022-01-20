@@ -4,8 +4,8 @@ BOOTMNT ?= ./media/boot
 
 ARMGNU ?= aarch64-linux-gnu
 
-COPS = -DRPI_VERSION=$(RPI_VERSION) -Wall -nostdlib -nostartfiles -ffreestanding -Iinclude -mgeneral-regs-only
-# COPS = -DRPI_VERSION=$(RPI_VERSION) -Wall -nostdlib -nostartfiles -ffreestanding -Iinclude
+# COPS = -DRPI_VERSION=$(RPI_VERSION) -Wall -nostdlib -nostartfiles -ffreestanding -Iinclude -mgeneral-regs-only
+COPS = -DRPI_VERSION=$(RPI_VERSION) -Wall -nostdlib -nostartfiles -ffreestanding -Iinclude
 
 ASMOPS = -Iinclude
 
@@ -45,12 +45,12 @@ kernel8.img: $(SRC_DIR)/linker.ld $(OBJ_FILES)
 	cp config.txt $(BOOTMNT)/
 	sync
 
-armstub/build/armstub_s.o: armstub/src/armstub.S
-	mkdir -p $(@D)
-	$(ARMGNU)-gcc $(COPS) -MMD -c $< -o $@
+# armstub/build/armstub_s.o: armstub/src/armstub.S
+# 	mkdir -p $(@D)
+# 	$(ARMGNU)-gcc $(COPS) -MMD -c $< -o $@
 
-armstub: armstub/build/armstub_s.o
-	$(ARMGNU)-ld --section-start=.text=0 -o armstub/build/armstub.elf armstub/build/armstub_s.o
-	$(ARMGNU)-objcopy armstub/build/armstub.elf -O binary armstub-new.bin
-	cp armstub-new.bin $(BOOTMNT)/
-	sync
+# armstub: armstub/build/armstub_s.o
+# 	$(ARMGNU)-ld --section-start=.text=0 -o armstub/build/armstub.elf armstub/build/armstub_s.o
+# 	$(ARMGNU)-objcopy armstub/build/armstub.elf -O binary armstub-new.bin
+# 	cp armstub-new.bin $(BOOTMNT)/
+# 	sync
