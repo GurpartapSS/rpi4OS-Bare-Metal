@@ -1,5 +1,6 @@
 #pragma once
 
+//from linux source code
 #define PAGE_SHIFT 12
 #define TABLE_SHIFT 9
 #define SECTION_SHIFT (PAGE_SHIFT + TABLE_SHIFT)
