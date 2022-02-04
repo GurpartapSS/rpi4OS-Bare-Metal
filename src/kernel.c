@@ -1,6 +1,7 @@
 #include "common.h"
 #include "mini_uart.h"
 #include "printf.h"
+#include "irq.h"
 
 u32 get_el();
 
@@ -18,6 +19,10 @@ void kernel_main() {
     printf("Printing RPI Bare Metal OS Initializing .....\n");
     uart_send_string("RPI Bare Metal OS Initializing .....\n");
 
+    irq_init_vectors();
+    enable_interrupt_controller();
+    irq_enable();
+
     #if RPI_VERSION == 4
         uart_send_string("\tBoard : Raspberry Pi 4\n");
     #endif
@@ -25,6 +30,6 @@ void kernel_main() {
     printf("\nDone with exception level: %d \n",get_el());
 
     while (1) {
-        uart_send(uart_recv());
+        // uart_send(uart_recv());
     }
 }
