@@ -27,7 +27,7 @@ const char entry_error_messages[16][32] = {
 	"ERROR_INVALID_EL0_32"	
 };
 
-void handle_invalid_entry(u32 type, u64 esr, u64 address) {
+void show_invalid_entry_message(u32 type, u64 esr, u64 address) {
     printf("Error Caught %s - %d, ESR: %X, Address: %X\n",entry_error_messages[type], type, esr, address);
 }
 
