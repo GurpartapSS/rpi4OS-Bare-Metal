@@ -2,6 +2,7 @@
 #include "mini_uart.h"
 #include "printf.h"
 #include "irq.h"
+#include "timer.h"
 
 u32 get_el();
 
@@ -9,7 +10,6 @@ void putc(void *p, char c) {
     if(c == '\n') {
         uart_send('\r');
     }
-
     uart_send(c);
 }
 
@@ -22,6 +22,8 @@ void kernel_main() {
     irq_init_vectors();
     enable_interrupt_controller();
     irq_enable();
+    timer_init();
+    
 
     #if RPI_VERSION == 4
         uart_send_string("\tBoard : Raspberry Pi 4\n");
