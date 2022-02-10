@@ -35,3 +35,21 @@ void handle_timer_3() {
 
     printf("Timer 3 received\n");
 }
+
+u64 timer_get_ticks() {
+    u32 timer_hi = REGS_TIMER->counter_hi;
+    u32 timer_lo = REGS_TIMER->counter_lo;
+
+    if (timer_hi != REGS_TIMER->counter_hi) {
+        timer_hi = REGS_TIMER->counter_hi;
+        timer_lo = REGS_TIMER->counter_lo;
+    }
+
+    return ((u64)timer_hi << 32) | timer_lo ;
+}
+
+void timer_sleep(u32 ms) {
+    u64 start_time = timer_get_ticks();
+
+    while((start_time + (ms *1000)) > timer_get_ticks());
+}

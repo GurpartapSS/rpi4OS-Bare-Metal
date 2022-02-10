@@ -8,8 +8,8 @@
 struct timer_regs
 {
     reg32 control_status;
-    reg32 counter_lo;
-    reg32 counter_hi;
+    reg32 counter_lo; //system counter lower 32 bits 
+    reg32 counter_hi; //system counter higher 32 bits
     reg32 compare[4];
 };
 

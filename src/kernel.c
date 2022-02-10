@@ -31,6 +31,13 @@ void kernel_main() {
 
     printf("\nDone with exception level: %d \n",get_el());
 
+    //testing sleep function
+    printf("sleeping for 2 Sec ...\n");
+    timer_sleep(2000); 
+    printf("sleeping for 5 Sec ...\n");
+    timer_sleep(5000);
+
+
     while (1) {
         // uart_send(uart_recv());
     }
