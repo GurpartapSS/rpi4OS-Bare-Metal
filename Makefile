@@ -11,7 +11,7 @@ ASMOPS = -Iinclude
 BUILD_DIR = build
 SRC_DIR = src
 
-all : kernel8.img
+all : kernel8.img armstub
 
 clean :
 	rm -rf $(BUILD_DIR) *.img
