@@ -3,6 +3,7 @@
 #include "printf.h"
 #include "irq.h"
 #include "timer.h"
+#include "i2c.h"
 
 u32 get_el();
 
@@ -30,13 +31,20 @@ void kernel_main() {
     #endif
 
     printf("\nDone with exception level: %d \n",get_el());
+    timer_sleep(500); 
 
-    //testing sleep function
-    printf("sleeping for 2 Sec ...\n");
-    timer_sleep(2000); 
-    printf("sleeping for 5 Sec ...\n");
-    timer_sleep(5000);
+    printf("Initializing I2c ..");
+    i2c_init();
 
+    for (int i = 0; i< 10;i++) {
+        char buffer[10];
+        i2c_recv(,buffer,9);
+        buffer[9] = 0;
+
+        printf("Received: %s\n",buffer);
+
+        timer_sleep(250);
+    }
 
     while (1) {
         // uart_send(uart_recv());
