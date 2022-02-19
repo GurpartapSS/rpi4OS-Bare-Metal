@@ -36,16 +36,7 @@ void kernel_main() {
     printf("Initializing I2c ..");
     i2c_init();
 
-    for (int i = 0; i< 10;i++) {
-        char buffer[10];
-        i2c_recv(,buffer,9);
-        buffer[9] = 0;
-
-        printf("Received: %s\n",buffer);
-
-        timer_sleep(250);
-    }
-
+    
     while (1) {
         // uart_send(uart_recv());
     }
