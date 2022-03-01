@@ -3,6 +3,8 @@
 #include "printf.h"
 #include "irq.h"
 #include "timer.h"
+#include "../include/sched.h"
+#include "fork.h"
 
 u32 get_el();
 
@@ -11,6 +13,15 @@ void putc(void *p, char c) {
         uart_send('\r');
     }
     uart_send(c);
+}
+
+void process(char *array) {
+    while(1) {
+        for (int i = 0; i < 5; i++) {
+            uart_send(array[i]);
+            timer_sleep(1000);
+        }
+    }
 }
 
 void kernel_main() {
@@ -37,6 +48,18 @@ void kernel_main() {
     printf("sleeping for 5 Sec ...\n");
     timer_sleep(5000);
 
+
+    int res = copy_process((unsigned long)&process,(unsigned long)"12345");
+        if(res!=0) {
+            printf("Error while starting process 1");
+            return;
+        }
+    
+    res = copy_process((unsigned long)&process,(unsigned long)"LALAH");
+        if(res!=0) {
+            printf("Error while starting process 2");
+            return;
+        }
 
     while (1) {
         // uart_send(uart_recv());

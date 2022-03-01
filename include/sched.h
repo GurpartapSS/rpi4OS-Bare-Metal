@@ -17,7 +17,7 @@ extern struct task_struct *current;
 extern struct task_struct * task[NR_TASKS];
 extern int nr_tasks;
 
-struct cpu_context {
+typedef struct cpu_context {
 	unsigned long x19;
 	unsigned long x20;
 	unsigned long x21;
@@ -31,15 +31,15 @@ struct cpu_context {
 	unsigned long fp;
 	unsigned long sp;
 	unsigned long pc;
-};
+}cpu_context_t;
 
-struct task_struct {
-	struct cpu_context cpu_context;
+typedef struct task_struct {
+	cpu_context_t cpu_context;
 	long state; //state of current task
 	long counter;   //count for how long is the current task running for. -1 for every tick and after 0, switch to next task
 	long priority;  //priority of current task, for now will be saved in counter and determines how long will the task run
 	long preempt_count; //if non-zero, do not switch to other task
-};
+}task_struct_t;
 
 extern void sched_init(void);
 extern void schedule(void);
