@@ -61,5 +61,6 @@ void kernel_main() {
 
     while (1) {
         // uart_send(uart_recv());
+        schedule();
     }
 }

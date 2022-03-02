@@ -21,3 +21,5 @@
 #define ERROR_INVALID_EL0_32	15 
 
 #define S_FRAME_SIZE			256 		// size of all saved registers
+
+void ret_from_fork(void);

@@ -15,6 +15,10 @@ void preempt_enable(void) {
     current->preempt_count--;
 }
 
+void schedule_tail(void) {
+    preempt_enable();
+}
+
 void schedule(void) {
     preempt_disable();
     int next, c;
