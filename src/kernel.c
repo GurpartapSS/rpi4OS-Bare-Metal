@@ -36,9 +36,7 @@ void kernel_main() {
     timer_init();
     
 
-    #if RPI_VERSION == 4
-        uart_send_string("\tBoard : Raspberry Pi 4\n");
-    #endif
+    uart_send_string("\tBoard : Raspberry Pi 4\n");
 
     printf("\nDone with exception level: %d \n",get_el());
 
