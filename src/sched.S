@@ -1,4 +1,4 @@
-#include "sched.h"
+#include "../include/sched.h"
 
 .globl cpu_switch_to
 cpu_switch_to:
