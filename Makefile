@@ -15,7 +15,6 @@ all : kernel8.img armstub
 
 clean :
 	rm -rf $(BUILD_DIR) *.img
-	rm -rf $(BUILD_DIR) *.bin
 
 $(BUILD_DIR)/%_c.o: $(SRC_DIR)/%.c
 	mkdir -p $(@D)
