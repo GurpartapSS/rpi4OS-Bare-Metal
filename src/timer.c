@@ -25,7 +25,7 @@ void handle_timer_1() {
     REGS_TIMER->compare[1] = curr_val_1;
     REGS_TIMER->control_status |= SYS_TIMER_IRQ_1;
 
-    printf("Timer 1 received\n");
+    // printf("Timer 1 received\n");
 }
 
 void handle_timer_3() {
@@ -33,7 +33,7 @@ void handle_timer_3() {
     REGS_TIMER->compare[3] = curr_val_3;
     REGS_TIMER->control_status |= SYS_TIMER_IRQ_3;
 
-    printf("Timer 3 received\n");
+    // printf("Timer 3 received\n");
 }
 
 u64 timer_get_ticks() {
